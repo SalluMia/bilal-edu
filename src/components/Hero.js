@@ -1,4 +1,3 @@
-// src/components/Hero.js
 import React, { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import heroImage from '../assets/hero.png';
@@ -39,15 +38,27 @@ const Hero = () => {
         transition={{ duration: 1 }}
         className="w-full max-w-4xl"
       >
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6 drop-shadow-lg">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4 drop-shadow-lg">
           Empowering Education Worldwide
         </h1>
-        <p className="text-white text-sm sm:text-base md:text-lg lg:text-xl max-w-2xl mx-auto mb-8">
+        <p className="text-white text-sm sm:text-base md:text-lg lg:text-xl max-w-2xl mx-auto mb-4">
           Join us in making a difference. Quality education for every child, everywhere.
         </p>
+
+        {/* Donate Now - Mobile Only */}
+        <a
+          href="https://www.launchgood.com/v4/campaign/edu_give_cic_empowering_the_entire_community__proposal_for_funding?src=internal_discover"
+          className="block sm:hidden mb-6 px-6 py-3 bg-green-600 text-white rounded-full hover:bg-green-700 transition-all duration-300 text-sm mx-auto"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          💖 Donate Now
+        </a>
+
+        {/* Learn More - Desktop Only */}
         <a
           href="#about"
-          className="inline-block bg-green-600 text-white px-6 py-3 rounded-full hover:bg-green-700 transition-all duration-300 text-sm sm:text-base md:text-lg"
+          className="hidden sm:inline-block bg-green-600 text-white px-6 py-3 rounded-full hover:bg-green-700 transition-all duration-300"
         >
           Learn More
         </a>

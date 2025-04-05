@@ -9,7 +9,7 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef();
 
-  const navItems = ["home", "about", "whatwedo", "contact"];
+  const navItems = ["home", "about", "what we do", "contact"];
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -34,7 +34,7 @@ const Navbar = () => {
         <motion.img
           src={logo}
           alt="EduGive Logo"
-          className="h-[100px] sm:h-[100px] w-auto object-contain"
+          className="h-[36px] sm:h-[40px] w-auto object-contain"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.3, duration: 0.6 }}
@@ -64,22 +64,21 @@ const Navbar = () => {
           ))}
         </ul>
 
-        {/* Join Us - Desktop */}
+        {/* Donate Now - Desktop */}
         <motion.div
           className="hidden sm:flex items-center space-x-4"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.9 }}
         >
-          <Link
-            to="contact"
-            smooth={true}
-            duration={500}
-            offset={-80}
-            className="px-4 py-2 bg-green-600 text-white rounded-full hover:bg-green-700 transition-all duration-300 shadow-md cursor-pointer text-sm md:text-base"
+          <a
+            href="https://www.launchgood.com/v4/campaign/edu_give_cic_empowering_the_entire_community__proposal_for_funding?src=internal_discover"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-4 py-2 bg-green-600 text-white rounded-full hover:bg-green-700 transition-all duration-300 shadow-md text-sm md:text-base"
           >
-            Join Us
-          </Link>
+            💖 Donate Now
+          </a>
         </motion.div>
 
         {/* Mobile Menu Icon */}
@@ -94,7 +93,7 @@ const Navbar = () => {
       {menuOpen && (
         <div
           ref={menuRef}
-          className="fixed inset-0 bg-white/90 backdrop-blur-md flex flex-col items-center justify-center space-y-6 text-gray-800 text-xl font-semibold z-40"
+          className="fixed inset-0 bg-white/90 backdrop-blur-md flex flex-col items-center justify-center space-y-6 text-gray-800 text-xl font-semibold z-30"
         >
           {navItems.map((item) => (
             <Link
@@ -109,16 +108,6 @@ const Navbar = () => {
               {item.charAt(0).toUpperCase() + item.slice(1)}
             </Link>
           ))}
-          <Link
-            to="contact"
-            smooth={true}
-            duration={500}
-            offset={-64}
-            className="inline-block px-6 py-3 bg-green-600 text-white rounded-full hover:bg-green-700"
-            onClick={() => setMenuOpen(false)}
-          >
-            Join Us
-          </Link>
         </div>
       )}
     </motion.nav>
