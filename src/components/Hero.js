@@ -41,14 +41,14 @@ const Hero = () => {
         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4 drop-shadow-lg">
           Empowering Education Worldwide
         </h1>
-        <p className="text-white text-sm sm:text-base md:text-lg lg:text-xl max-w-2xl mx-auto mb-4">
-          Join us in making a difference. Quality education for every child, everywhere.
+        <p className="text-white border-l-4 border-green-600 bg-[#00800083] p-4  text-sm sm:text-base md:text-lg lg:text-xl max-w-4xl mx-auto mb-4">
+        We are currently developing an online platform for our free courses, ensuring accessible and high-quality education for students and teachers worldwide. Our courses will be conducted via Microsoft Teams, Zoom, or on-site. Registration will be required through Eventbrite. Stay tuned for updates!
         </p>
 
         {/* Donate Now - Mobile Only */}
         <a
           href="https://www.launchgood.com/v4/campaign/edu_give_cic_empowering_the_entire_community__proposal_for_funding?src=internal_discover"
-          className="block sm:hidden mb-6 px-6 py-3 bg-green-600 text-white rounded-full hover:bg-green-700 transition-all duration-300 text-sm mx-auto"
+          className=" mb-6 px-6 py-3 bg-green-600 text-white rounded-full hover:bg-green-700 transition-all duration-300 text-sm mx-auto"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -56,12 +56,12 @@ const Hero = () => {
         </a>
 
         {/* Learn More - Desktop Only */}
-        <a
+        {/* <a
           href="#about"
-          className="hidden sm:inline-block bg-green-600 text-white px-6 py-3 rounded-full hover:bg-green-700 transition-all duration-300"
+          className=" bg-green-600 text-white px-6 py-3 rounded-full hover:bg-green-700 transition-all duration-300"
         >
           Learn More
-        </a>
+        </a> */}
       </motion.div>
 
       {/* Floating Animated Box */}
