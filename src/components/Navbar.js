@@ -34,7 +34,7 @@ const Navbar = () => {
         <motion.img
           src={logo}
           alt="EduGive Logo"
-          className="h-[36px] sm:h-[40px] w-auto object-contain"
+          className="h-[80px] sm:h-[80px] w-auto object-contain"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.3, duration: 0.6 }}
