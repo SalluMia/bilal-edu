@@ -30,6 +30,7 @@ const Navbar = () => {
       transition={{ duration: 0.6 }}
       className="fixed top-0 w-full bg-white shadow-md z-50 h-[64px]"
     >
+      {/* div  */}
       <div className="max-w-7xl mx-auto px-4 md:px-6 py-0 h-full flex justify-between items-center">
         <motion.img
           src={logo}
