@@ -31,45 +31,45 @@ function getDateParts(dateString) {
   return { month: month.slice(0,3).toUpperCase(), day };
 }
 
-const EventBox = ({ event, big }) => {
+const EventBox = ({ event, big, center }) => {
   const { month, day } = getDateParts(event.date);
   return (
     <a
       href={event.url}
       target="_blank"
       rel="noopener noreferrer"
-      className={`flex items-center bg-green-50 hover:bg-green-100 transition rounded-xl shadow p-6 border border-green-100 group ${big ? 'md:p-10 md:h-48' : 'md:p-8 md:h-40'}`}
+      className={`bg-white rounded-2xl shadow-lg border border-green-100 hover:shadow-xl transition p-6 flex flex-col sm:flex-row items-center gap-4 group min-h-[10rem] ${center ? 'mx-auto justify-center' : ''}`}
+      style={{ minHeight: big ? '10rem' : '8rem', maxWidth: center ? '700px' : '100%' }}
     >
-      {/* Date block */}
-      <div className={`flex flex-col items-center justify-center rounded-lg bg-white border border-gray-200 mr-6 ${big ? 'w-20 h-20' : 'w-16 h-16'}`}>
-        <span className="text-sm font-bold text-red-600">{month}</span>
-        <span className={`font-extrabold text-gray-800 ${big ? 'text-3xl' : 'text-2xl'}`}>{day}</span>
-      </div>
-      {/* Event image */}
+      {/* Image */}
       <img
         src={event.img}
         alt={event.title}
-        className={`rounded-lg object-cover shadow mr-6 border ${big ? 'w-28 h-28' : 'w-20 h-20'}`}
+        className="rounded-lg object-cover shadow border w-40 h-40 sm:w-40 sm:h-40 mb-2 sm:mb-0"
         onError={e => { e.target.onerror = null; e.target.src = fallbackImg; }}
       />
-      {/* Event details */}
-      <div className="flex-1 min-w-0">
-        <h3 className={`font-semibold text-green-800 group-hover:underline mb-2 truncate ${big ? 'text-2xl' : 'text-lg'}`}>{event.title}</h3>
-        <div className={`text-gray-700 mb-1 truncate ${big ? 'text-base' : 'text-sm'}`}>{event.location}</div>
-        <div className={`text-gray-500 truncate ${big ? 'text-sm' : 'text-xs'}`}>{event.date}</div>
+      {/* Content */}
+      <div className="flex-1 flex flex-col items-center sm:items-start text-center sm:text-left gap-1">
+        <div className="flex flex-col items-center justify-center rounded-lg bg-green-50 border border-gray-200 w-16 h-16 sm:w-20 sm:h-20 mb-2 sm:mb-0">
+          <span className="text-xs sm:text-sm font-bold text-red-600">{month}</span>
+          <span className={`font-extrabold text-gray-800 ${big ? 'text-3xl' : 'text-2xl'}`}>{day}</span>
+        </div>
+        <h3 className="text-lg sm:text-xl font-semibold text-green-800 group-hover:underline break-words whitespace-normal w-full" style={{wordBreak:'break-word'}}>{event.title}</h3>
+        <div className="text-gray-700 text-sm">{event.location}</div>
+        <div className="text-gray-500 text-xs">{event.date}</div>
       </div>
     </a>
   );
 };
 
 const EventBoxes = () => (
-  <div className="py-12 px-4 bg-white">
+  <div className="py-12 px-4 bg-green-50">
     <h2 className="text-3xl font-bold text-center text-green-700 mb-8">Current Courses</h2>
     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
       <EventBox event={events[0]} />
       <EventBox event={events[1]} />
-      <div className="md:col-span-2">
-        <EventBox event={events[2]} big />
+      <div className="md:col-span-2 flex justify-center">
+        <EventBox event={events[2]} big center />
       </div>
     </div>
   </div>
