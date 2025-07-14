@@ -10,6 +10,7 @@ const Navbar = () => {
   const menuRef = useRef();
 
   const navItems = ["home", "about", "what we do", "contact"];
+  const eventbriteUrl = "https://www.eventbrite.co.uk/o/edu-give-cic-77139394303";
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -63,6 +64,23 @@ const Navbar = () => {
               </Link>
             </motion.li>
           ))}
+          {/* Courses Tab - External Link */}
+          <motion.li
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 + navItems.length * 0.1 }}
+          >
+            <a
+              href={eventbriteUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-green-600 transition duration-300 cursor-pointer relative group"
+            >
+              <span className="group-hover:border-b-2 border-green-600 pb-1 transition-all duration-300">
+                Courses
+              </span>
+            </a>
+          </motion.li>
         </ul>
 
         {/* Donate Now - Desktop */}
@@ -109,6 +127,16 @@ const Navbar = () => {
               {item.charAt(0).toUpperCase() + item.slice(1)}
             </Link>
           ))}
+          {/* Courses Tab - External Link (Mobile) */}
+          <a
+            href={eventbriteUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-green-600 transition duration-300"
+            onClick={() => setMenuOpen(false)}
+          >
+            Courses
+          </a>
         </div>
       )}
     </motion.nav>
