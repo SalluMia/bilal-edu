@@ -57,14 +57,14 @@ const About = () => {
             Whether you're a young learner, adult returning to education, or someone looking to build a new skill — Edu Give is here to support your journey.
           </p>
         </div>
-        <div className="bg-green-50 rounded-lg p-4 border border-green-100">
+        {/* <div className="bg-green-50 rounded-lg p-4 border border-green-100">
           <span className="font-bold text-green-700 block mb-1">Short version for social media or flyers:</span>
           <p className="text-base text-gray-800">
             🌟 <span className="font-bold">Edu Give CIC:</span> A not-for-profit making education creative, practical, and accessible for all.<br />
             Courses, workshops, and projects led by passionate educators — empowering communities across Birmingham and beyond.<br />
             <span className="font-semibold">Learn. Grow. Thrive.</span>
           </p>
-        </div>
+        </div> */}
       </div>
     </div>
   );

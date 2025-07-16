@@ -31,46 +31,62 @@ function getDateParts(dateString) {
   return { month: month.slice(0,3).toUpperCase(), day };
 }
 
-const EventBox = ({ event, big, center }) => {
+const EventBox = ({ event }) => {
   const { month, day } = getDateParts(event.date);
   return (
     <a
       href={event.url}
       target="_blank"
       rel="noopener noreferrer"
-      className={`bg-white rounded-2xl shadow-lg border border-green-100 hover:shadow-xl transition p-6 flex flex-col sm:flex-row items-center gap-4 group min-h-[10rem] ${center ? 'mx-auto justify-center' : ''}`}
-      style={{ minHeight: big ? '10rem' : '8rem', maxWidth: center ? '700px' : '100%' }}
+      className="bg-white rounded-xl shadow-lg border border-green-100 hover:shadow-xl transition-all duration-300 overflow-hidden group flex flex-col h-full"
     >
       {/* Image */}
-      <img
-        src={event.img}
-        alt={event.title}
-        className="rounded-lg object-cover shadow border w-40 h-40 sm:w-40 sm:h-40 mb-2 sm:mb-0"
-        onError={e => { e.target.onerror = null; e.target.src = fallbackImg; }}
-      />
+      <div className="h-48 overflow-hidden">
+        <img
+          src={event.img}
+          alt={event.title}
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          onError={e => { e.target.onerror = null; e.target.src = fallbackImg; }}
+        />
+      </div>
+      
       {/* Content */}
-      <div className="flex-1 flex flex-col items-center sm:items-start text-center sm:text-left gap-1">
-        <div className="flex flex-col items-center justify-center rounded-lg bg-green-50 border border-gray-200 w-16 h-16 sm:w-20 sm:h-20 mb-2 sm:mb-0">
-          <span className="text-xs sm:text-sm font-bold text-red-600">{month}</span>
-          <span className={`font-extrabold text-gray-800 ${big ? 'text-3xl' : 'text-2xl'}`}>{day}</span>
+      <div className="p-6 flex flex-col flex-grow">
+        {/* Date Badge */}
+        <div className="flex items-center justify-center rounded-lg bg-green-50 border border-gray-200 w-16 h-16 mb-4">
+          <div className="text-center">
+            <span className="text-xs font-bold text-red-600 block">{month}</span>
+            <span className="text-2xl font-extrabold text-gray-800">{day}</span>
+          </div>
         </div>
-        <h3 className="text-lg sm:text-xl font-semibold text-green-800 group-hover:underline break-words whitespace-normal w-full" style={{wordBreak:'break-word'}}>{event.title}</h3>
-        <div className="text-gray-700 text-sm">{event.location}</div>
-        <div className="text-gray-500 text-xs">{event.date}</div>
+        
+        {/* Title */}
+        <h3 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-green-600 transition-colors">
+          {event.title}
+        </h3>
+        
+        {/* Location and Date */}
+        <div className="text-sm text-gray-600 mb-4 flex-grow">
+          <p className="mb-1">{event.location}</p>
+          <p>{event.date}</p>
+        </div>
+        
+        {/* Learn Now Button - pushed to bottom */}
+        <button className="w-full bg-green-600 text-white font-semibold py-3 px-4 rounded-lg hover:bg-green-700 transition-colors duration-300 uppercase tracking-wide mt-auto">
+          Learn Now
+        </button>
       </div>
     </a>
   );
 };
 
 const EventBoxes = () => (
-  <div className="py-12 px-4 bg-green-50">
-    <h2 className="text-3xl font-bold text-center text-green-700 mb-8">Current Courses</h2>
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-      <EventBox event={events[0]} />
-      <EventBox event={events[1]} />
-      <div className="md:col-span-2 flex justify-center">
-        <EventBox event={events[2]} big center />
-      </div>
+  <div className="py-20 px-4 bg-gradient-to-br from-green-50 via-white to-green-100">
+    <h2 className="text-4xl font-extrabold text-center text-green-700 mb-12 drop-shadow-lg">Current Courses</h2>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+      {events.map((event, index) => (
+        <EventBox key={index} event={event} />
+      ))}
     </div>
   </div>
 );

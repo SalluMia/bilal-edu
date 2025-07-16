@@ -15,7 +15,7 @@ function App() {
       {/* <Video /> */}
       <EventBoxes />
       <div id="about"><About /></div>
-      <div id="whatwedo"><WhatWeDo /></div>
+      <div id="what we do"><WhatWeDo /></div>
       {/* <div id="underconstruction"><UnderConstruction /></div> */}
       <div id="contact"><Footer /></div>
     </div>

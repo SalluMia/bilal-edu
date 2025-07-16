@@ -9,8 +9,8 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef();
 
-  const navItems = ["home", "about", "what we do", "contact"];
-  const eventbriteUrl = "https://www.eventbrite.co.uk/o/edu-give-cic-77139394303";
+  const navItems = ["home", "about", "what we do", "courses", "contact"];
+  const eventbriteUrl = "https://www.eventbrite.co.uk/o/edu-give-cic-113619702251";
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -51,36 +51,32 @@ const Navbar = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 + i * 0.1 }}
             >
-              <Link
-                to={item}
-                smooth={true}
-                duration={500}
-                offset={-80}
-                className="hover:text-green-600 transition duration-300 cursor-pointer relative group"
-              >
-                <span className="group-hover:border-b-2 border-green-600 pb-1 transition-all duration-300">
-                  {item.charAt(0).toUpperCase() + item.slice(1)}
-                </span>
-              </Link>
+              {item === "courses" ? (
+                <a
+                  href={eventbriteUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-green-600 transition duration-300 cursor-pointer relative group"
+                >
+                  <span className="group-hover:border-b-2 border-green-600 pb-1 transition-all duration-300">
+                    {item.charAt(0).toUpperCase() + item.slice(1)}
+                  </span>
+                </a>
+              ) : (
+                <Link
+                  to={item}
+                  smooth={true}
+                  duration={500}
+                  offset={-80}
+                  className="hover:text-green-600 transition duration-300 cursor-pointer relative group"
+                >
+                  <span className="group-hover:border-b-2 border-green-600 pb-1 transition-all duration-300">
+                    {item.charAt(0).toUpperCase() + item.slice(1)}
+                  </span>
+                </Link>
+              )}
             </motion.li>
           ))}
-          {/* Courses Tab - External Link */}
-          <motion.li
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 + navItems.length * 0.1 }}
-          >
-            <a
-              href={eventbriteUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-green-600 transition duration-300 cursor-pointer relative group"
-            >
-              <span className="group-hover:border-b-2 border-green-600 pb-1 transition-all duration-300">
-                Courses
-              </span>
-            </a>
-          </motion.li>
         </ul>
 
         {/* Donate Now - Desktop */}
@@ -115,28 +111,31 @@ const Navbar = () => {
           className="fixed inset-0 bg-white/90 backdrop-blur-md flex flex-col items-center justify-center space-y-6 text-gray-800 text-xl font-semibold z-30"
         >
           {navItems.map((item) => (
-            <Link
-              key={item}
-              to={item}
-              smooth={true}
-              duration={500}
-              offset={-64}
-              className="hover:text-green-600 transition duration-300"
-              onClick={() => setMenuOpen(false)}
-            >
-              {item.charAt(0).toUpperCase() + item.slice(1)}
-            </Link>
+            item === "courses" ? (
+              <a
+                key={item}
+                href={eventbriteUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-green-600 transition duration-300"
+                onClick={() => setMenuOpen(false)}
+              >
+                {item.charAt(0).toUpperCase() + item.slice(1)}
+              </a>
+            ) : (
+              <Link
+                key={item}
+                to={item}
+                smooth={true}
+                duration={500}
+                offset={-64}
+                className="hover:text-green-600 transition duration-300"
+                onClick={() => setMenuOpen(false)}
+              >
+                {item.charAt(0).toUpperCase() + item.slice(1)}
+              </Link>
+            )
           ))}
-          {/* Courses Tab - External Link (Mobile) */}
-          <a
-            href={eventbriteUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-green-600 transition duration-300"
-            onClick={() => setMenuOpen(false)}
-          >
-            Courses
-          </a>
         </div>
       )}
     </motion.nav>
